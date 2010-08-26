@@ -59,7 +59,8 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
-    'hhdictionary.context_processors.mediaUrl',
+    'hhdictionary.utils.context_processors.mediaUrl',
+    'hhdictionary.menu.context_processors.activeView',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,4 +86,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
 	'hhdictionary.dictionary',
+	'hhdictionary.menu',
+	'hhdictionary.utils',
 )
+
+# config for activeView context processor
+PATH_PREFIX = '/django/giedrius/hhdictionary'
