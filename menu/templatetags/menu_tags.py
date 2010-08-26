@@ -1,5 +1,5 @@
 from django.template import Library, Node
-from hhdictionary.menu.models import Entry
+from menu.models import Entry
 from django.template.loader import render_to_string
 
 register = Library()

@@ -1,4 +1,4 @@
-from hhdictionary.dictionary.models import Language, Phrases, Records
+from dictionary.models import Language, Phrases, Records
 from django.contrib import admin
 
 admin.site.register(Language)

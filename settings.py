@@ -59,8 +59,8 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
-    'hhdictionary.utils.context_processors.mediaUrl',
-    'hhdictionary.menu.context_processors.activeView',
+    'utils.context_processors.mediaUrl',
+    'menu.context_processors.activeView',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -69,7 +69,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'hhdictionary.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
 	'/var/django/templates/giedrius',
@@ -85,9 +85,9 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-	'hhdictionary.dictionary',
-	'hhdictionary.menu',
-	'hhdictionary.utils',
+	'dictionary',
+	'menu',
+	'utils',
 )
 
 # config for activeView context processor

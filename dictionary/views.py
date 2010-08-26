@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from hhdictionary.dictionary.models import Language, Phrases, Records
+from dictionary.models import Language, Phrases, Records
 
 from django.utils.datastructures import MultiValueDictKeyError
 from django.core.exceptions import ObjectDoesNotExist
