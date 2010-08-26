@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block content %}
+<form action="{% url dictionary.views.dictionary %}" method="GET">
+    <p><input type="submit" value="Translate" id="translate" />
+    from
+    <select name="fromLanguage">
+        {% for language in languages %}
+            <option value="{{ language.name }}">{{ language.name }}</option>
+        {% endfor %}
+    </select>
+    language to
+    <select name="toLanguage">
+        {% for language in languages %}
+            <option value="{{ language.name }}">{{ language.name }}</option>
+        {% endfor %}
+    </select>
+    language.
+    </p>
+</form>
+{% block translation %}
+{% endblock %}
+{% endblock %}

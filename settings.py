@@ -60,7 +60,7 @@ TEMPLATE_LOADERS = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
     'utils.context_processors.mediaUrl',
-    'menu.context_processors.activeView',
+    'utils.context_processors.currentPath',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -74,6 +74,9 @@ ROOT_URLCONF = 'urls'
 TEMPLATE_DIRS = (
 	'/var/django/templates/giedrius',
 	'/var/django/templates/giedrius/hhdictionary',
+	'/var/django/giedrius/hhdictionary/menu/templates',
+	'/var/django/giedrius/hhdictionary/dictionary/templates',
+	'/var/django/giedrius/hhdictionary/news/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -85,9 +88,12 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.markup',
 	'dictionary',
 	'menu',
 	'utils',
+	'news',
+    'tagging',
 )
 
 # config for activeView context processor
