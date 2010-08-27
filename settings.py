@@ -60,7 +60,8 @@ TEMPLATE_LOADERS = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
     'utils.context_processors.mediaUrl',
-    'utils.context_processors.currentPath',
+    'menu.context_processors.currentModule',
+    'menu.context_processors.pathPrefix',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,5 +97,6 @@ INSTALLED_APPS = (
     'tagging',
 )
 
-# config for activeView context processor
-PATH_PREFIX = '/django/giedrius/hhdictionary'
+# config for currentModule context processor
+PATH_PREFIX = '/django/giedrius/hhdictionary/'
+DEFAULT_MODULE = 'dictionary'

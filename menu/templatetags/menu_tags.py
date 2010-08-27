@@ -10,7 +10,7 @@ class MenuNode(Node):
     def render(self, context):
         try:
             # Generate menu here
-            menuList = Entry.objects.order_by('place')
+            menuList = Entry.objects.order_by('number')
             return render_to_string('menu.html', {
                 'menuList': menuList,
             }, context_instance = context)
