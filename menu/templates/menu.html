@@ -1,5 +1,5 @@
 <ul>
     {% for menuEntry in menuList %}
-        <li><a href="{{ PATH_PREFIX }}{{ menuEntry.path }}" class="{% ifequal menuEntry.name currentModule %}active{% endifequal %}">{{ menuEntry.title }}</a></li>
+        <li><a href="{{ menuEntry.path }}" class="{% ifequal menuEntry.name currentModule %}active{% endifequal %}">{{ menuEntry.title }}</a></li>
     {% endfor %}
 </ul>

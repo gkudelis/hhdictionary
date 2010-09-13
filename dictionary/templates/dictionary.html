@@ -7,6 +7,13 @@
 			<td class="from">{{ translation.fromPhrase }}</td>
 			<td class="mid">---</td>
 			<td class="to">{{ translation.toPhrase }}</td>
+			<td class="record">{% ifnotequal translation.recordUrl '' %}
+                <object type="application/x-shockwave-flash" 
+                style="width:17px; height:17px;" 
+                data="{{ MEDIA_URL }}flash/button/musicplayer.swf?song_url={{ MEDIA_URL }}{{ translation.recordUrl }}">
+                <param name="movie" value="{{ MEDIA_URL }}flash/button/musicplayer.swf?song_url={{ MEDIA_URL }}{{ translation.recordUrl }}" />
+                </object>{% endifnotequal %}
+            </td>
 		</tr>
 	{% endfor %}
 	</table>

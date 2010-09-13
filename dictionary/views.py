@@ -13,25 +13,33 @@ def dictionary(request):
        
         fromLanguage = Language.objects.get(name = fromLanguageName)
         toLanguage = Language.objects.get(name = toLanguageName)
-
-        # Get dictionaries and NOT objects
-        fromPhrases = Phrases.objects.get(language = fromLanguage)
-        toPhrases = Phrases.objects.get(language = toLanguage)
-
-        translations = ()
-        for field in Phrases.phraseList:
-            translations += ({
-                'fromPhrase':  fromPhrases.__dict__[field],
-                'toPhrase': toPhrases.__dict__[field],
-            },)
-        
-        return render_to_response('dictionary.html', {
-            'languages': Language.objects.all(),
-            'translations': translations,
-        }, context_instance = RequestContext(request))
-
+    
     except (MultiValueDictKeyError, ObjectDoesNotExist):
         #this happens when accessing the main page :)
         return render_to_response('dictionaryForm.html', {
-            'languages': Language.objects.all(),
+            'languages': Language.objects.filter(enabled = True),
+        }, context_instance = RequestContext(request))
+
+    else:
+        # Get phrases
+        fromPhrases = fromLanguage.phrases
+        toPhrases = toLanguage.phrases
+     
+        # Get records
+        records = toLanguage.records
+     
+        translations = ()
+        for field in Phrases.phraseList:
+            translations += ({
+                'fromPhrase': fromPhrases.__dict__[field],
+                'toPhrase': toPhrases.__dict__[field],
+                # This for some bizzare reason gives the url relative to media
+                'recordUrl': records.__dict__[field],
+            },)
+        
+        return render_to_response('dictionary.html', {
+            'languages': Language.objects.filter(enabled = True),
+            'translations': translations,
+            'fromLanguageName': fromLanguageName,
+            'toLanguageName': toLanguageName,
         }, context_instance = RequestContext(request))

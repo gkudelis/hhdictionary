@@ -2,21 +2,12 @@ from django.db import models
 
 
 
-class Language(models.Model):
-    name = models.CharField(max_length=20, primary_key=True)
-
-    def __unicode__(self):
-        return self.name + u' language'
-
-
 class Phrase(models.CharField):
     def __init__(self):
-        models.CharField.__init__(self, max_length=50)
+        models.CharField.__init__(self, max_length=50, blank=True)
 
 
 class Phrases(models.Model):
-    language = models.OneToOneField(Language)
-    
     hello = Phrase()
     goodBye = Phrase()
     yes = Phrase()
@@ -47,13 +38,13 @@ class Record(models.FileField):
     def __init__(self):
         models.FileField.__init__(self, upload_to=Record.uploadTo, blank=True)
 
-    def uploadTo(self, filename):
-        return 'records/' + self.language.name + '_' + filename
+    @staticmethod
+    def uploadTo(instance, filename):
+        import time
+        return ''.join(['records/', time.strftime('%Y-%m-%d_%H:%M:%S_'), filename])
 
 
 class Records(models.Model):
-    language = models.OneToOneField(Language)
-
     hello = Record()
     goodBye = Record()
     yes = Record()
@@ -66,7 +57,7 @@ class Records(models.Model):
     couldYouPickMeUp = Record()
     good = Record()
     bad = Record()
-    thankYou = Phrase()
+    thankYou = Record()
     please = Record()
     excuseMe = Record()
     beer = Record()
@@ -80,3 +71,11 @@ class Records(models.Model):
         return self.language.name + u' records'
 
 
+class Language(models.Model):
+    name = models.CharField(max_length=20, primary_key=True)
+    enabled = models.BooleanField(default = False)
+    phrases = models.OneToOneField(Phrases)
+    records = models.OneToOneField(Records)
+
+    def __unicode__(self):
+        return self.name + u' language'

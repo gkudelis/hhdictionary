@@ -1,3 +1,0 @@
-
-			<td><img src="{{ url hhdictionary.dictionary.views.dictionary }}/media/arrow.jpg" /></td>
-{#			<td><object type="application/x-shockwave-flash" style="width:17px; height:17px;" data="{{ url hhdictionary.dictionary.views.dictionary }}/media/flash/button/musicplayer.swf?song_url=http://localhost/hhdictionary/media/records/dvorak.mp3"><param name="movie" value="{{ url hhdictionary.dictionary.views.dictionary }}/media/flash/button/musicplayer.swf?song_url=http://localhost/hhdictionary/media/records/dvorak.mp3" /></object></td>#}

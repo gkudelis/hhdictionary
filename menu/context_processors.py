@@ -1,22 +1,30 @@
 def currentModule(request):
     from django.conf import settings
-    
-    # Cut off static path prefix
-    cutPath = request.path[len(settings.PATH_PREFIX):]
+    from menu.models import Entry
 
-    # Get first word ( == module )
-    if len(cutPath) > 0:
-        i = cutPath.find('/')
-        if i == -1: #Not found
-            currentModule = cutPath
-        else:
-            currentModule = cutPath[:i]
+    # Get candidates and current path
+    candidates = []
+    for menuEntry in Entry.objects.all():
+        candidates.append({
+            'name': menuEntry.name,
+            'path': menuEntry.path,
+        })
+    path = request.path
+
+    # Determine the best candidate
+    best = {
+        'name': 'default',
+        'length': 0,
+    }
+    for candidate in candidates:
+        if (candidate['path'] == path[:len(candidate['path'])] 
+                and len(candidate['path']) > best['length']):
+            best['name'] = candidate['name']
+            best['length'] = len(candidate['path'])
+
+    if best['length'] > 0:
+        currentModule = best['name']
     else:
         currentModule = settings.DEFAULT_MODULE
 
     return {'currentModule': currentModule}
-
-
-def pathPrefix(reqest):
-    from django.conf import settings
-    return {'PATH_PREFIX': settings.PATH_PREFIX}

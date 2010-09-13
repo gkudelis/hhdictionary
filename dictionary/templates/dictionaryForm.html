@@ -6,13 +6,13 @@
     from
     <select name="fromLanguage">
         {% for language in languages %}
-            <option value="{{ language.name }}">{{ language.name }}</option>
+            <option value="{{ language.name }}" {% ifequal language.name fromLanguageName %}selected="selected"{% endifequal %}>{{ language.name }}</option>
         {% endfor %}
     </select>
     language to
     <select name="toLanguage">
         {% for language in languages %}
-            <option value="{{ language.name }}">{{ language.name }}</option>
+            <option value="{{ language.name }}" {% ifequal language.name toLanguageName %}selected="selected"{% endifequal %}>{{ language.name }}</option>
         {% endfor %}
     </select>
     language.
