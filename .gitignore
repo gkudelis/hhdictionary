@@ -1,6 +1,5 @@
 apache/
 tagging/
 news/
-cronjobs/
 settings.py
 *.pyc
