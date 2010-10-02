@@ -3,27 +3,27 @@ from django.db import models
 
 
 class Phrase(models.CharField):
-    def __init__(self):
-        models.CharField.__init__(self, max_length=50, blank=True)
+    def __init__(self, *args, **kwargs):
+        super(Phrase, self).__init__(max_length=50, blank=True, *args, **kwargs)
 
 
 class Phrases(models.Model):
-    hello = Phrase()
-    goodBye = Phrase()
-    yes = Phrase()
-    no = Phrase()
-    whereAreYouGoing = Phrase()
-    iAmGoingTo = Phrase()
-    here = Phrase()
-    iDoNotUnderstand = Phrase()
-    iAmHitchhiking = Phrase()
-    couldYouPickMeUp = Phrase()
-    good = Phrase()
-    bad = Phrase()
-    thankYou = Phrase()
-    please = Phrase()
-    excuseMe = Phrase()
-    beer = Phrase()
+    hello = Phrase(verbose_name='hello')
+    goodBye = Phrase(verbose_name='good bye')
+    yes = Phrase(verbose_name='yes')
+    no = Phrase(verbose_name='no')
+    whereAreYouGoing = Phrase(verbose_name='where are you going?')
+    iAmGoingTo = Phrase(verbose_name='i am going to')
+    here = Phrase(verbose_name='here')
+    iDoNotUnderstand = Phrase(verbose_name='i do not understand')
+    iAmHitchhiking = Phrase(verbose_name='i am hitchhiking')
+    couldYouPickMeUp = Phrase(verbose_name='could you pick me up?')
+    good = Phrase(verbose_name='good')
+    bad = Phrase(verbose_name='bad')
+    thankYou = Phrase(verbose_name='thank you')
+    please = Phrase(verbose_name='please')
+    excuseMe = Phrase(verbose_name='excuse me')
+    beer = Phrase(verbose_name='beer')
 
     phraseList = ('hello', 'goodBye', 'yes', 'no', 'whereAreYouGoing',
                     'iAmGoingTo', 'here', 'iDoNotUnderstand', 'iAmHitchhiking',
@@ -35,8 +35,8 @@ class Phrases(models.Model):
 
 
 class Record(models.FileField):
-    def __init__(self):
-        models.FileField.__init__(self, upload_to=Record.uploadTo, blank=True)
+    def __init__(self, *args, **kwargs):
+        super(Record, self).__init__(upload_to=Record.uploadTo, blank=True, *args, **kwargs)
 
     @staticmethod
     def uploadTo(instance, filename):
@@ -45,22 +45,22 @@ class Record(models.FileField):
 
 
 class Records(models.Model):
-    hello = Record()
-    goodBye = Record()
-    yes = Record()
-    no = Record()
-    whereAreYouGoing = Record()
-    iAmGoingTo = Record()
-    here = Record()
-    iDoNotUnderstand = Record()
-    iAmHitchhiking = Record()
-    couldYouPickMeUp = Record()
-    good = Record()
-    bad = Record()
-    thankYou = Record()
-    please = Record()
-    excuseMe = Record()
-    beer = Record()
+    hello = Record(verbose_name='hello')
+    goodBye = Record(verbose_name='good bye')
+    yes = Record(verbose_name='yes')
+    no = Record(verbose_name='no')
+    whereAreYouGoing = Record(verbose_name='where are you going?')
+    iAmGoingTo = Record(verbose_name='i am going to')
+    here = Record(verbose_name='here')
+    iDoNotUnderstand = Record(verbose_name='i do not understand')
+    iAmHitchhiking = Record(verbose_name='i am hitchhiking')
+    couldYouPickMeUp = Record(verbose_name='could you pick me up?')
+    good = Record(verbose_name='good')
+    bad = Record(verbose_name='bad')
+    thankYou = Record(verbose_name='thank you')
+    please = Record(verbose_name='please')
+    excuseMe = Record(verbose_name='excuse me')
+    beer = Record(verbose_name='beer')
     
     recordList = ('hello', 'goodBye', 'yes', 'no', 'whereAreYouGoing',
                     'iAmGoingTo', 'here', 'iDoNotUnderstand', 'iAmHitchhiking',
